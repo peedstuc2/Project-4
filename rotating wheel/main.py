@@ -7,7 +7,7 @@ screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Project 4 - Rotating Wheel")
 running = True
 
-
+angle = 0
 while running:
     for session in pygame.event.get():
         if session.type == pygame.QUIT:
@@ -20,18 +20,22 @@ while running:
 
     #spokes
     TotalSpokes = 0
-    angle = 0
+    spokesangle = angle
     while TotalSpokes < 36:
     #for spokes in spokescount:
 
         lon = 300
         lat = 400
-        end_x = lat + 50 * math.cos(math.radians(angle))
-        end_y = lon + 50 * math.sin(math.radians(angle))
+        end_x = lat + 50 * math.cos(math.radians(spokesangle))
+        end_y = lon + 50 * math.sin(math.radians(spokesangle))
 
         pygame.draw.line(screen, (0, 0, 0), (400, 300), (end_x, end_y))
-        angle += 10
+        spokesangle += 10
         TotalSpokes += 1
+
+
+
+    angle += 1
     #pygame.draw.circle(screen, (255, 0, 0), (400, 300), 5) - I decided to remove this for now. The spokes kinda makes a clean looking diamond in the middle.
 
     pygame.display.flip()
